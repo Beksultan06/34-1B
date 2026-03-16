@@ -21,10 +21,13 @@ from django.conf.urls.static import static
 
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
+from core.yasg import urlpatterns as yasg
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/v1/product/", include("app.product.urls")),
     path("api/v1/users/", include("app.users.urls")),
+    path("", include(yasg)),
 
     path("token/", TokenObtainPairView.as_view(), name='token'),
     path("token-refresh/", TokenRefreshView.as_view(), name='token-refresh'),
